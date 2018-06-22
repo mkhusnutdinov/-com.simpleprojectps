@@ -2,6 +2,8 @@ package com.simpleprojectps.steptests;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -11,17 +13,24 @@ import com.simpleprojectps.utils.Drivers.WDrivers;
 
 public class SimpleUAT {
 	HomePage homePage = new HomePage();
+	static WebDriver driver;
 	
 	@BeforeTest
 	public void startUp() {
-		Drivers.getDriver(WDrivers.CHROME).manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		Drivers.getDriver(WDrivers.CHROME).get("https://www.publicstorage.com/");
+		driver = Drivers.getDriver(WDrivers.CHROME);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.get("https://www.publicstorage.com/");
 	}
 	
 	@Test
 	public void test1() {
 		homePage.searchBar.sendKeys("90006");
 		homePage.loginButton.click();
+	}
+	
+	@AfterTest
+	public void tearDown() {
+		driver.close();
 	}
 	
 	
