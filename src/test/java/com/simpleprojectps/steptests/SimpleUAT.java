@@ -1,5 +1,7 @@
 package com.simpleprojectps.steptests;
 
+import static org.testng.Assert.fail;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -22,10 +24,15 @@ public class SimpleUAT {
 		driver.get("https://www.publicstorage.com/");
 	}
 	
-	@Test
-	public void test1() {
+	@Test(priority = 1)
+	public void homePageSearchBarTest() {
 		homePage.searchBar.sendKeys("90006");
 		homePage.loginButton.click();
+	}
+	
+	@Test(priority = 2)
+	public void testToFail() {
+		fail();
 	}
 	
 	@AfterTest
