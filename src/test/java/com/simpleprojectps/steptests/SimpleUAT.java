@@ -1,6 +1,6 @@
 package com.simpleprojectps.steptests;
 
-import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertEquals;
 
 
 import java.util.concurrent.TimeUnit;
@@ -33,7 +33,8 @@ public class SimpleUAT {
 	
 	@Test(priority = 2)
 	public void testToFail() {
-		assertFalse(homePage.loginButton.isDisplayed());
+		assertEquals("a","b");
+		
 	}
 	
 	@AfterTest
