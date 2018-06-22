@@ -36,6 +36,10 @@ public class SimpleUAT {
 		assertEquals("a","b");
 		
 	}
+	@Test(priority = 0)
+	public void testToFail2() {
+		assertEquals("b","a");
+	}
 	
 	@AfterTest
 	public void tearDown() {
